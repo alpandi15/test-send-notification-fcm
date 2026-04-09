@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment files
+.env
+.env.*
+
+# Firebase / Google service account credentials
+identix-admin-sdk.json
+*-admin-sdk.json
+*service-account*.json
+
+# Apple Push Notification credentials
+*.p8
+*.p12
+*.mobileprovision
