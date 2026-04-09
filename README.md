@@ -15,21 +15,83 @@ Script ini sudah menambahkan payload khusus Android dan iOS supaya notifikasi le
 - `identix-admin-sdk.json`: service account Firebase
 - `requirements.txt`: dependency Python
 
-## Persiapan
+## Installation Step By Step
 
-Jika virtualenv belum aktif, pakai interpreter dari folder `venv` langsung.
+### 1. Masuk ke folder project
 
-Install dependency:
+```bash
+cd /Volumes/SSD/Work/SATUPINTU/TISP/TESTING/firebase-fcm-test
+```
+
+### 2. Pastikan Python tersedia
+
+```bash
+python3 --version
+```
+
+Kalau belum ada Python 3, install dulu Python 3.10+.
+
+### 3. Buat virtual environment
+
+Kalau folder `venv` belum ada, jalankan:
+
+```bash
+python3 -m venv venv
+```
+
+### 4. Install dependency
+
+Tanpa activate:
 
 ```bash
 ./venv/bin/pip install -r requirements.txt
 ```
 
-## Cek Bantuan Command
+Atau kalau mau activate dulu:
+
+```bash
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 5. Siapkan file service account Firebase
+
+Simpan file service account JSON di root project.
+
+Default yang dipakai script ini:
+
+```text
+identix-admin-sdk.json
+```
+
+Kalau nama file berbeda, nanti bisa dipanggil dengan `--service-account`.
+
+### 6. Cek bantuan command
+
+Jika tidak activate virtualenv:
 
 ```bash
 ./venv/bin/python fcm.py --help
 ```
+
+Kalau virtualenv sudah di-activate:
+
+```bash
+python fcm.py --help
+```
+
+### 7. Test koneksi ke FCM tanpa kirim ke device
+
+```bash
+./venv/bin/python fcm.py \
+  --topic test-topic \
+  --title "FCM Validate" \
+  --body "cek koneksi" \
+  --data '{"type":"socket_test","event":"ping"}' \
+  --validate-only
+```
+
+Kalau hasilnya `HTTP Status: 200`, berarti setup dasar sudah benar.
 
 ## Contoh Yang Setara Dengan Payload Legacy
 
